@@ -18,4 +18,26 @@ class Book < ApplicationRecord
       book.errors[:name] << 'Porn is bad.'
     end
   end
+
+  ##### Callback #####
+  before_validation :add_perfect_to_human
+  # Bookの削除時、属性をログに表示する
+  after_destroy { Rails.logger.info "Book is deleted: #{self.attributes}" }
+  # コールバックに条件の設定ができる
+  after_destroy :display_high_price_warning, if: :high_price?
+
+  # タイトルにHumanがあったらPerfect Humanに変換する
+  def add_perfect_to_human
+    self.name.gsub!(/Human/, 'Perfect Human')
+  end
+
+  def high_price?
+    price >= 5000
+  end
+
+  # 高価な書籍を削除したときに警告を表示する
+  def display_high_price_warning
+    Rails.logger.warn "Book with high price is deleted: #{self.attributes}"
+    Rails.logger.warn "Please check!!!!!!"
+  end
 end
