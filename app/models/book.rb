@@ -3,4 +3,6 @@ class Book < ApplicationRecord
   scope :written_about, ->(theme) { where('name LIKE ?', "#{theme}") }
 
   belongs_to :publisher
+  has_many :book_authors
+  has_many :authors, through: :book_authors
 end
