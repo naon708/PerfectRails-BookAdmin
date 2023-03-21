@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   ##### Scope #####
   scope :costly, -> { where('price > ?', 3000) }
-  scope :written_about, ->(theme) { where(':name LIKE ?', "#{theme}") }
+  scope :written_about, ->(theme) { where('name LIKE ?', "%#{theme}%") }
 
   ##### Relation #####
   belongs_to :publisher
