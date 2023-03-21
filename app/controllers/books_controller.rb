@@ -3,7 +3,15 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i(show destroy)
   around_action :action_logger, only: %i(destroy)
 
-  def show; end
+  ### フォーマットによる出し分けが不要ならrespond_toを書かなくても良い
+  # def show; end
+
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @book }
+    end
+  end
 
   def destroy
     @book.destroy
