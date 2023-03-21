@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Versions
+Ruby: 2.6.6
+Rails: 6.0.3
+sqlite3: 1.4
+webpacker: 4.2.2
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### コントローラーのフック
+- before_action
+- after_action(正常にActionが実行された場合のみ呼び出される)
+- around_action(指定したメソッド内にyieldの記述が必要)
+- skip_*_action(フックのスキップ)
