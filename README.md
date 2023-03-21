@@ -14,3 +14,8 @@ webpacker: 4.2.2
 
 ### renderメソッドのオプション(formatの種類)
 :plain, :html, :body, :template, :file, :inline, :json, :xml 
+
+
+
+### Memo
+- jbuilderとGraphQLって役割とかI/Oが似てる気がする
